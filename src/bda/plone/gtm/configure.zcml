@@ -18,4 +18,29 @@
     file="gtm_icon.png"
     layer=".interfaces.IGTMExtensionLayer" />
 
+  <!-- integration views -->
+  <browser:page
+    for="*"
+    name="gtm_script"
+    class=".views.GTMIntegration"
+    attribute="script"
+    permission="zope2.View"
+    layer=".interfaces.IGTMExtensionLayer" />
+
+  <browser:page
+    for="*"
+    name="gtm_noscript"
+    class=".views.GTMIntegration"
+    attribute="noscript"
+    permission="zope2.View"
+    layer=".interfaces.IGTMExtensionLayer" />
+
+  <!-- context viewlet -->
+  <browser:viewlet
+    name="bda.plone.gtm"
+    class=".views.GTMViewlet"
+    manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+    permission="zope2.View"
+    layer=".interfaces.IGTMExtensionLayer" />
+
 </configure>

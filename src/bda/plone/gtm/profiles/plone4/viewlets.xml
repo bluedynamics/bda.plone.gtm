@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object>
+  <order manager="plone.portalheader" purge="false" skinname="*">
+    <viewlet name="bda.plone.gtm"/>
+  </order>
+</object>
