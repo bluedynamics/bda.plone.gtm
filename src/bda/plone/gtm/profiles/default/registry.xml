@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<registry>
+
+  <records interface="bda.plone.gtm.interfaces.IGTMSettings">
+    <value key="container_id" purge="false"></value>
+    <value key="layer_name" purge="false">dataLayer</value>
+  </records>
+
+</registry>

@@ -5,4 +5,17 @@
 
   <include file="profiles.zcml" />
 
+  <!-- controlpanel -->
+  <browser:page
+    name="gtm_controlpanel"
+    for="zope.component.interfaces.ISite"
+    class=".controlpanel.GTMSettingsControlPanel"
+    permission="cmf.ManagePortal" />
+
+  <!-- resources -->
+  <browser:resource
+    name="gtm_icon.png"
+    file="gtm_icon.png"
+    layer=".interfaces.IGTMExtensionLayer" />
+
 </configure>

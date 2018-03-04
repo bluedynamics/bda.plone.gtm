@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object
+    name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="bda.plone.gtm"
+    purge="False">
+
+  <configlet
+    title="Google Tag Manager Settings"
+    action_id="gtm"
+    appId="bda.plone.gtm"
+    category="Products"
+    url_expr="string:${portal_url}/@@gtm_controlpanel"
+    icon_expr="string:${portal_url}/++resource++gtm_icon.png"
+    visible="True"
+    i18n:attributes="title">
+    <permission>Manage portal</permission>
+  </configlet>
+
+</object>
