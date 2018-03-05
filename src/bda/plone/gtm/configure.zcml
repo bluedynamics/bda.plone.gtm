@@ -22,7 +22,7 @@
   <browser:viewlet
     name="bda.plone.gtm.loader"
     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
-    class=".views.GTMLoaderViewlet"
+    class=".viewlets.GTMLoaderViewlet"
     permission="zope2.View"
     layer=".interfaces.IGTMExtensionLayer"
   />
@@ -30,7 +30,7 @@
   <!-- data viewlet -->
   <browser:viewlet
     name="bda.plone.gtm.data"
-    class=".views.GTMDataViewlet"
+    class=".viewlets.GTMDataViewlet"
     manager="plone.app.layout.viewlets.interfaces.IPortalTop"
     permission="zope2.View"
     layer=".interfaces.IGTMExtensionLayer" />
