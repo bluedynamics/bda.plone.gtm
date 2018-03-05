@@ -1,7 +1,9 @@
+from bda.plone.gtm.interfaces import IGTMData
 from bda.plone.gtm.interfaces import IGTMSettings
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from plone.app.layout.viewlets.common import ViewletBase
+import json
 
 
 GTM_SCRIPT = """
@@ -39,6 +41,11 @@ class GTMLoaderViewlet(ViewletBase, GTMSettings):
 
     def render(self):
         settings = self.settings
+        # render empty if not GTM enabled
+        if not settings.enabled:
+            return u''
+        # return GTM loader script snippet with configured layer name and
+        # container ID
         return GTM_SCRIPT % dict(
             layer_name=settings.layer_name,
             container_id=settings.container_id
@@ -49,21 +56,32 @@ class GTMDataViewlet(ViewletBase, GTMSettings):
     """Google Tag Manager data viewlet.
     """
 
-    @property
-    def data(self):
-        """Context related data as dict to push to GTM data layer.
-        """
-        return {}
-
     def render(self):
         """Render script tag pushing context related data to GTM layer.
         """
         settings = self.settings
-        tags = list()
-        for k, v in self.data:
-            tags.append("'%(k)s':'%(v)s'" % dict(k=k, v=v))
-        return u'%(no_script)s<script>%(layer_name)s.push({%(data)s})</script>' % dict(
+        # render empty if not GTM enabled
+        if not settings.enabled:
+            return u''
+        # lookup GTM data
+        data = IGTMData(self.context).data
+        # render empty if no data to track
+        if not data:
+            return u''
+        # ensure data is list of dicts
+        if not isinstance(data, list):
+            assert isinstance(data, dict)
+            data = [data]
+        # collect data.push calls
+        pushs = list()
+        for d in data:
+            pushs.append(u'%(layer_name)s.push(%(data)s);' % dict(
+                layer_name=settings.layer_name,
+                data=json.dumps(d)
+            ))
+        # return noscript fallback and script snipped containing push calls
+        # to data layer
+        return u'%(no_script)s<script>%(pushs)s</script>' % dict(
             no_script=GTM_NO_SCRIPT % dict(container_id=settings.container_id),
-            layer_name=self.settings.layer_name,
-            data=u','.join(tags)
+            pushs=u','.join(pushs)
         )

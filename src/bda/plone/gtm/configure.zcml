@@ -35,4 +35,7 @@
     permission="zope2.View"
     layer=".interfaces.IGTMExtensionLayer" />
 
+  <!-- default GTM data adapter -->
+  <adapter factory=".data.DefaultGTMData" />
+
 </configure>
