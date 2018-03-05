@@ -1,4 +1,3 @@
-from Products.Five import BrowserView
 from bda.plone.gtm.interfaces import IGTMSettings
 from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
@@ -32,23 +31,21 @@ class GTMSettings(object):
         return registry.forInterface(IGTMSettings)
 
 
-class GTMIntegration(BrowserView, GTMSettings):
-    """Google Tag Manager Integration view.
+class GTMLoaderViewlet(ViewletBase, GTMSettings):
+    """Google Tag Manager loader viewlet.
     """
 
-    def script(self):
+    def render(self):
+        print 80 * '#'
+        print 'GTMLoaderViewlet.render()'
         settings = self.settings
         return GTM_SCRIPT.format(
             layer_name=settings.layer_name,
             container_id=settings.container_id
         )
 
-    def noscript(self):
-        settings = self.settings
-        return GTM_NO_SCRIPT.format(container_id=settings.container_id)
 
-
-class GTMViewlet(ViewletBase, GTMSettings):
+class GTMDataViewlet(ViewletBase, GTMSettings):
     """Context specific Google Tag Manager viewlet.
     """
 
@@ -61,10 +58,14 @@ class GTMViewlet(ViewletBase, GTMSettings):
     def render(self):
         """Render script tag pushing context related data to GTM layer.
         """
+        print 80 * '#'
+        print 'GTMDataViewlet.render()'
+        settings = self.settings
         tags = list()
         for k, v in self.data:
             tags.append("'{k}':'{v}'".format(k=k, v=v))
-        return u'<script>{layer_name}.push({{{data}}})</script>'.format(
-            self.settings.layer_name,
-            u','.join(tags)
+        return u'{no_script}<script>{layer_name}.push({{{data}}})</script>'.format(
+            no_script=GTM_NO_SCRIPT.format(container_id=settings.container_id),
+            layer_name=self.settings.layer_name,
+            data=u','.join(tags)
         )
