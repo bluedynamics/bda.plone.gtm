@@ -21,7 +21,10 @@ setup(
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        'Framework :: Plone :: 4.3',
+        'Framework :: Plone :: 5.1',
+
     ],
     author='BlueDynamics Alliance',
     author_email='dev@bluedynamics.com',
