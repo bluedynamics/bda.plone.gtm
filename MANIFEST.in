@@ -1,0 +1,4 @@
+include *.rst
+recursive-include docs *
+recursive-include src *
+recursive-exclude src *.pyc *.pyo
