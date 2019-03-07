@@ -24,8 +24,7 @@
     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
     class=".viewlets.GTMLoaderViewlet"
     permission="zope2.View"
-    layer=".interfaces.IGTMExtensionLayer"
-  />
+    layer=".interfaces.IGTMExtensionLayer" />
 
   <!-- data viewlet -->
   <browser:viewlet
