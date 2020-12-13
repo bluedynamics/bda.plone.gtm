@@ -31,7 +31,8 @@ class IGTMSettings(Interface):
             'enabled_help',
             default='Google Tag Manager enabled'
         ),
-        default=False
+        default=False,
+        required=False
     )
 
     container_id = schema.TextLine(
