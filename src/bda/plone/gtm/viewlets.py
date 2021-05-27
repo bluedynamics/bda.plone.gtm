@@ -83,5 +83,5 @@ class GTMDataViewlet(ViewletBase, GTMSettings):
         # to data layer
         return u'%(no_script)s<script>%(pushs)s</script>' % dict(
             no_script=GTM_NO_SCRIPT % dict(container_id=settings.container_id),
-            pushs=u','.join(pushs)
+            pushs=u' '.join(pushs)
         )
