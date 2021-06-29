@@ -51,7 +51,24 @@ class GTMLoaderViewlet(ViewletBase, GTMSettings):
             container_id=settings.container_id
         )
 
+ 
+class GTMNoScriptLoaderViewlet(ViewletBase, GTMSettings):
+    """Google Tag Manager noscript loader viewlet.
+    """
 
+    def render(self):
+        settings = self.settings
+        # render empty if not GTM enabled
+        if not settings.enabled:
+            return u''
+        # return GTM loader script snippet with configured layer name and
+        # container ID
+        return GTM_NO_SCRIPT % dict(
+            layer_name=settings.layer_name,
+            container_id=settings.container_id
+        )
+
+ 
 class GTMDataViewlet(ViewletBase, GTMSettings):
     """Google Tag Manager data viewlet.
     """

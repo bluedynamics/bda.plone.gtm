@@ -26,6 +26,14 @@
     permission="zope2.View"
     layer=".interfaces.IGTMExtensionLayer" />
 
+  <!-- noscript loader viewlet -->
+  <browser:viewlet
+    name="bda.plone.gtm.noscript_loader"
+    manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+    class=".viewlets.GTMNoScriptLoaderViewlet"
+    permission="zope2.View"
+    layer=".interfaces.IGTMExtensionLayer" />
+
   <!-- data viewlet -->
   <browser:viewlet
     name="bda.plone.gtm.data"
