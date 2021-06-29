@@ -1,13 +1,13 @@
 Changelog
 =========
 
-1.0a2 (unreleased)
+1.1.dev0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added noscript loader
 
 
 1.0a1 (2018-06-06)
 ------------------
 
-- Initial
+- Initial implementation
