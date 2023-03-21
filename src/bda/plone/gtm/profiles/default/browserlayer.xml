@@ -2,5 +2,6 @@
 <layers>
   <layer
     name="bda.plone.gtm"
-    interface="bda.plone.gtm.interfaces.IGTMExtensionLayer" />
+    interface="bda.plone.gtm.interfaces.IGTMExtensionLayer"
+  />
 </layers>
