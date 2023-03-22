@@ -17,6 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 """
 
+
 GTM_NO_SCRIPT = """
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=%(container_id)s"
@@ -26,8 +27,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 class GTMSettings(object):
-    """Google Tag Manager settings mixin.
-    """
+    """Google Tag Manager settings mixin."""
 
     @property
     def settings(self):
@@ -36,8 +36,7 @@ class GTMSettings(object):
 
 
 class GTMLoaderViewlet(ViewletBase, GTMSettings):
-    """Google Tag Manager loader viewlet.
-    """
+    """Google Tag Manager loader viewlet."""
 
     def render(self):
         settings = self.settings
@@ -53,8 +52,7 @@ class GTMLoaderViewlet(ViewletBase, GTMSettings):
 
  
 class GTMNoScriptLoaderViewlet(ViewletBase, GTMSettings):
-    """Google Tag Manager noscript loader viewlet.
-    """
+    """Google Tag Manager noscript loader viewlet."""
 
     def render(self):
         settings = self.settings
@@ -70,8 +68,7 @@ class GTMNoScriptLoaderViewlet(ViewletBase, GTMSettings):
 
  
 class GTMDataViewlet(ViewletBase, GTMSettings):
-    """Google Tag Manager data viewlet.
-    """
+    """Google Tag Manager data viewlet."""
 
     def render(self):
         """Render script tag pushing context related data to GTM layer.

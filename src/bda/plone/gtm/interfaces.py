@@ -6,8 +6,7 @@ from zope.interface import Interface
 
 
 class IGTMExtensionLayer(Interface):
-    """Browser layer for bda.plone.gtm.
-    """
+    """Browser layer for bda.plone.gtm."""
 
 
 class IGTMData(Interface):
@@ -17,13 +16,14 @@ class IGTMData(Interface):
     for the current context.
     """
 
-    data = Attribute('Dictionary or list of dictionaries containing the '
-                     'data which gets pushed to GTM data layer.')
+    data = Attribute(
+        'Dictionary or list of dictionaries containing the '
+        'data which gets pushed to GTM data layer.'
+    )
 
 
 class IGTMSettings(Interface):
-    """Google Tag manager Settings.
-    """
+    """Google Tag manager Settings."""
 
     enabled = schema.Bool(
         title=_('enabled', default='Enabled'),
